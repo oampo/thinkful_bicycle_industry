@@ -16,8 +16,8 @@ class BikeSpecification(object):
         self.frame_type = frame_type
         self.wheel_type = wheel_type
 
-        self.cost = self.frame_type.COST + 2 * self.wheel_type.COST
-        self.weight = self.frame_type.WEIGHT + 2 * self.wheel_type.WEIGHT
+        self.cost = self.frame_type.cost + 2 * self.wheel_type.cost
+        self.weight = self.frame_type.weight + 2 * self.wheel_type.weight
 
     def full_name(self):
         """
