@@ -1,3 +1,5 @@
+from errors import InsufficientFundsError
+
 class Customer(object):
     """ A bike shop customer """
 
