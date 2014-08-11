@@ -36,6 +36,10 @@ class Shop(object):
         Args:
             manufacturer_name: The manufacturer to purchase from
             model_name: The model to purchase
+
+        Raises:
+            KeyError: If the manufacturer or model of bike aren't sold by
+                the shop
         """
         manufacturer = self.manufacturers[manufacturer_name]
         bike = manufacturer.sell(model_name)
@@ -48,6 +52,11 @@ class Shop(object):
         Args:
             manufacturer_name: The manufacturer of the item
             model_name: The model to sell
+
+        Raises:
+            KeyError: If the manufacturer or model of bike aren't sold by
+                the shop
+            IndexError: If the shop has no stock of the item
         """
         bike = self.inventory[manufacturer_name][model_name].pop()
         self.profit += (self.price(manufacturer_name, model_name) -
@@ -65,6 +74,10 @@ class Shop(object):
 
         Returns:
             The price of the item
+
+        Raises:
+            KeyError: If the manufacturer or model of bike aren't sold by
+                the shop
         """
         manufacturer = self.manufacturers[manufacturer_name]
         return manufacturer.price(model_name) * (1.0 + self.markup)
@@ -79,6 +92,10 @@ class Shop(object):
 
         Returns:
             The quantity of the item held in stock
+
+        Raises:
+            KeyError: If the manufacturer or model of bike aren't sold by
+                the shop
         """
         return len(self.inventory[manufacturer_name][model_name])
 
